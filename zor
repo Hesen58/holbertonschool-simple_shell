@@ -1,9 +1,8 @@
 #!/bin/bash
 zor(){
     local b="$1"
-    chmod 777 $b
     git add .
-    git commit -m "a"
+    git commit -m $b
     git push
 }
 zor $1

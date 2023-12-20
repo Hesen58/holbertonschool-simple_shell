@@ -12,6 +12,7 @@ int main(void)
 		char *hay = NULL;
 		size_t n = 0;
 		char **arr;
+		pid_t id;
 
 		printf("#cisfun$ ");
 		if (getline(&hay, &n, stdin) == EOF)
@@ -20,7 +21,7 @@ int main(void)
 			break;
 		}
 		arr = cut_string(hay, arr);
-		pid_t id = fork();
+		id = fork();
 
 		if (id == 0)
 		{
