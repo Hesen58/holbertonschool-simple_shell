@@ -10,7 +10,7 @@
 char **cut_string(char *hay, char **arr)
 {
 	char *tok;
-	int i = 0;
+	int i = 0, j = 0;
 
 	tok = strtok(hay, " \n");
 
@@ -18,12 +18,15 @@ char **cut_string(char *hay, char **arr)
 
 	while (tok != NULL)
 	{
-		arr[i] = (char *)malloc(strlen(tok) + 1);
+		j = strlen(tok);
+		arr[i] = (char *)malloc(j + 1);
 		strcpy(arr[i], tok);
-
+		arr[i][j] = '\0';
 		tok = strtok(NULL, " \n");
+		
 		i++;
 	}
+	arr[i] = NULL;
 
 	return (arr);
 }

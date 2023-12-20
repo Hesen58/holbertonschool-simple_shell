@@ -14,7 +14,6 @@ int main(void)
 		char **arr;
 		pid_t id;
 
-		printf("#cisfun$ ");
 		if (getline(&hay, &n, stdin) == EOF)
 		{
 			printf("\n");
