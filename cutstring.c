@@ -12,7 +12,7 @@ char **cut_string(char *hay, char **arr)
 	char *tok;
 	int i = 0, j = 0;
 
-	tok = strtok(hay, " \n");
+	tok = strtok(hay, " ");
 
 	arr = (char **)malloc(sizeof(char *) * 250);
 
@@ -21,12 +21,9 @@ char **cut_string(char *hay, char **arr)
 		j = strlen(tok);
 		arr[i] = (char *)malloc(j + 1);
 		strcpy(arr[i], tok);
-		arr[i][j] = '\0';
-		tok = strtok(NULL, " \n");
-		
+		tok = strtok(NULL, " ");	
 		i++;
 	}
-	arr[i] = NULL;
 
 	return (arr);
 }

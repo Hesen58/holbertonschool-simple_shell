@@ -4,29 +4,39 @@
  *
  * Return: Success.
  */
-
 int main(void)
 {
 	while (1)
 	{
-		char *hay = NULL;
-		size_t n = 0;
-		char **arr;
-		pid_t id;
+		char *buf = NULL, *str, **arr;
+		size_t bufsize, symb;
+		int i = 0;
+		pid_t chid;
 
-		if (getline(&hay, &n, stdin) == EOF)
+		symb = getline(&buf, &bufsize, stdin);
+		if (symb == EOF)
 		{
-			printf("\n");
 			break;
 		}
-		arr = cut_string(hay, arr);
-		id = fork();
-
-		if (id == 0)
+		arr = malloc(sizeof(char *) * 10);
+		while (str = strtok_r(buf, " \n", &buf))
+		{
+			arr[i] = malloc(sizeof(char) * strlen(str));
+			arr[i] = str;
+			i++;
+		}
+		arr[i] = NULL;
+		chid = fork();
+		if (chid == -1)
+		{
+			perror("Error");
+			exit(EXIT_FAILURE);
+		}
+		if (chid == 0)
 		{
 			if (execve(arr[0], arr, environ) == -1)
 			{
-				perror("./shell");
+				perror("Error");
 				exit(EXIT_FAILURE);
 			}
 		}
