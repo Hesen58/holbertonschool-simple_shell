@@ -4,39 +4,37 @@
  *
  * Return: Success.
  */
+
 int main(void)
 {
 	while (1)
 	{
-		char *buf = NULL, *str, **arr;
-		size_t bufsize;
-		int i = 0, symb;
-		pid_t chid;
+		char *hay = NULL;
+		size_t n = 0;
+		char **arr;
+		pid_t id;
 
-		symb = getline(&buf, &bufsize, stdin);
-		if (symb == EOF)
+		if (isatty(STDIN_FILENO))
 		{
+			printf("#cisfun$ ");
+		}
+
+		if (getline(&hay, &n, stdin) == -1)
+		{
+			if (isatty(STDIN_FILENO))
+					printf("\n");
+			free(hay);
 			break;
 		}
-		arr = malloc(sizeof(char *) * 10);
-		while ((str = strtok_r(buf, " \n", &buf)))
-		{
-			arr[i] = malloc(sizeof(char) * strlen(str));
-			arr[i] = str;
-			i++;
-		}
-		arr[i] = NULL;
-		chid = fork();
-		if (chid == -1)
-		{
-			perror("Error");
-			exit(EXIT_FAILURE);
-		}
-		if (chid == 0)
+		arr = cut_string(hay, arr);
+		id = fork();
+
+		if (id == 0)
 		{
 			if (execve(arr[0], arr, environ) == -1)
 			{
-				perror("Error");
+				free_arr(arr);
+				free(hay);
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -44,6 +42,8 @@ int main(void)
 		{
 			wait(NULL);
 		}
+		free(hay);
+		free_arr(arr);
 	}
 	return (0);
 }
