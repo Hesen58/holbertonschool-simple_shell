@@ -28,5 +28,7 @@ char **cut_string(char *hay, char **arr)
 		i++;
 	}
 
+	arr[i] = NULL;
+
 	return (arr);
 }
