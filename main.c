@@ -31,7 +31,7 @@ int main(void)
 
 		if (id == 0)
 		{
-			if (execve(arr[0], arr, environ) == -1)
+			if (execve(arr[0], arr, NULL) == -1)
 			{
 				free_arr(arr);
 				free(hay);
