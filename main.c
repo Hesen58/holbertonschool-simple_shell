@@ -9,8 +9,8 @@ int main(void)
 	while (1)
 	{
 		char *buf = NULL, *str, **arr;
-		size_t bufsize, symb;
-		int i = 0;
+		size_t bufsize;
+		int i = 0, symb;
 		pid_t chid;
 
 		symb = getline(&buf, &bufsize, stdin);
@@ -19,7 +19,7 @@ int main(void)
 			break;
 		}
 		arr = malloc(sizeof(char *) * 10);
-		while (str = strtok_r(buf, " \n", &buf))
+		while ((str = strtok_r(buf, " \n", &buf)))
 		{
 			arr[i] = malloc(sizeof(char) * strlen(str));
 			arr[i] = str;

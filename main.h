@@ -11,5 +11,5 @@
 #include <errno.h>
 extern char **environ;
 char **cut_string(char *hay, char **arr);
-
+void free_arr(char **arr);
 #endif
