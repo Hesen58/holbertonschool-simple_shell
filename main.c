@@ -33,10 +33,10 @@ int main(void)
 		{
 			if (execve(arr[0], arr, environ) == -1)
 			{
-				free_arr(arr);
-				free(hay);
 				exit(EXIT_FAILURE);
 			}
+			free(hay);
+			free_arr(arr);
 		}
 		else
 		{
