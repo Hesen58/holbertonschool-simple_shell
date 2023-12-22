@@ -31,12 +31,12 @@ int main(void)
 
 		if (id == 0)
 		{
+			free(hay);
 			if (execve(arr[0], arr, environ) == -1)
 			{
+				free_arr(arr);
 				exit(EXIT_FAILURE);
 			}
-			free(hay);
-			free_arr(arr);
 		}
 		else
 		{
