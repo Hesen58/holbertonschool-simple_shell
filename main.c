@@ -27,6 +27,13 @@ int main(void)
 			break;
 		}
 		arr = cut_string(hay, arr);
+
+		if (arr == NULL || arr[0] == NULL || arr[0][0] == '\0')
+		{
+			free(hay);
+			free_arr(arr);
+			continue;
+		}
 		id = fork();
 
 		if (id == 0)
