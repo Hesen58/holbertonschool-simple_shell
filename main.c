@@ -9,7 +9,7 @@ int main(void)
 {
 	while (1)
 	{
-		char *hay = NULL;
+		char *buf = NULL;
 		size_t n = 0;
 		char **arr;
 		pid_t id;
@@ -19,18 +19,18 @@ int main(void)
 			printf("#cisfun$ ");
 		}
 
-		if (getline(&hay, &n, stdin) == -1)
+		if (getline(&buf, &n, stdin) == -1)
 		{
 			if (isatty(STDIN_FILENO))
 					printf("\n");
-			free(hay);
+			free(buf);
 			break;
 		}
-		arr = cut_string(hay, arr);
+		arr = cut_string(buf, arr);
 
 		if (arr == NULL || arr[0] == NULL || arr[0][0] == '\0')
 		{
-			free(hay);
+			free(buf);
 			free_arr(arr);
 			continue;
 		}
@@ -38,7 +38,7 @@ int main(void)
 
 		if (id == 0)
 		{
-			free(hay);
+			free(buf);
 			if (execve(arr[0], arr, environ) == -1)
 			{
 				free_arr(arr);
@@ -49,7 +49,7 @@ int main(void)
 		{
 			wait(NULL);
 		}
-		free(hay);
+		free(buf);
 		free_arr(arr);
 	}
 	return (0);
