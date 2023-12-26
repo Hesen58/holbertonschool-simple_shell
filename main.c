@@ -40,7 +40,7 @@ int main(void)
 			return (2);
 		}
 
-		if (access(arr[0], F_OK) && environ != NULL)
+		if (access(arr[0], F_OK) == 0)
 		{
 			id = fork();
 

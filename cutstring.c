@@ -9,7 +9,7 @@
 
 char **cut_string(char *buf, char **arr)
 {
-	char *tok, bin[] = "/bin/", *temp = bin;
+	char *tok, *bin = strcat(env_path(), "/"), *temp = bin;
 	int i = 0;
 	int k;
 	struct stat st;
