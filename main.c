@@ -61,7 +61,7 @@ int main(void)
 			}
 		}
 		else
-			fprintf(stderr, "%s: %d: %s: not found\n", "hsh", getpid(), arr[0]);
+			fprintf(stderr, "%s: %d: %s: not found\n", "hsh", 1, arr[0]);
 		free(buf);
 		free_arr(arr);
 	}
