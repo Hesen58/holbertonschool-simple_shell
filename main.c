@@ -40,7 +40,7 @@ int main(void)
 			return (2);
 		}
 
-		if (access(arr[0], F_OK) == 0 && access(getenv("PATH"), F_OK))
+		if (access(arr[0], F_OK), && environ != NULL)
 		{
 			id = fork();
 
