@@ -26,10 +26,15 @@ char **cut_string(char *buf, char **arr)
 		tok = strtok(NULL, " \n");
 		i++;
 	}
+	if (i == 0)
+	{
+		free(arr);
+		return (NULL);
+	}
 	if (buf[0] == '\n')
 		return (NULL);
-	temp = strdup(bin);
-	temp = realloc(temp, strlen(arr[0]) + strlen(temp) + 1);
+	temp = (char *)malloc(strlen(arr[0]) + strlen(bin) + 1);
+	strcpy(temp, bin);
 	strcat(temp, arr[0]);
 	if (buf != NULL && stat(arr[0], &st) != 0 && stat(temp, &st) == 0)
 	{
