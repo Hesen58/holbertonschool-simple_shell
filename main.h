@@ -4,12 +4,12 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <errno.h>
 #include <time.h>
 #include <string.h>
 #include <stdlib.h>
 #include <errno.h>
+#include <sys/stat.h>
 extern char **environ;
-char **cut_string(char *hay, char **arr);
+char **cut_string(char *buf, char **arr);
 void free_arr(char **arr);
 #endif

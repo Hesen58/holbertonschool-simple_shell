@@ -34,6 +34,12 @@ int main(void)
 			free_arr(arr);
 			continue;
 		}
+		if (strcmp(arr[0], "exit") == 0)
+		{
+			free(buf);
+			free_arr(arr);
+			return (0);
+		}
 		id = fork();
 
 		if (id == 0)
