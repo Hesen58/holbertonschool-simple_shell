@@ -41,10 +41,11 @@ int main(void)
 			free_arr(arr);
 			return (2);
 		}
-		id = fork();
 
 		if (stat(arr[0], &st) == 0)
 		{
+			id = fork();
+
 			if (id == 0)
 			{
 				free(buf);
