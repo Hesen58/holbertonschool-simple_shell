@@ -15,6 +15,10 @@ char **cut_string(char *buf, char **arr)
 	struct stat st;
 
 	tok = strtok(buf, " \n");
+	if (tok == NULL)
+	  {
+		return (NULL);
+	  }
 	arr = (char **)malloc(sizeof(char *) * 250);
 	for (k = 0; k < 250; k++)
 		arr[k] = NULL;
@@ -27,10 +31,9 @@ char **cut_string(char *buf, char **arr)
 		i++;
 	}
 	if (i == 0)
-	{
-		free_arr(arr);
-		return (NULL);
-	}
+	  {
+		free(arr);
+	  }
 	if (buf[0] == '\n')
 		return (NULL);
 	temp = (char *)malloc(strlen(arr[0]) + strlen(bin) + 1);
