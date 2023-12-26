@@ -28,7 +28,7 @@ char **cut_string(char *buf, char **arr)
 	}
 	if (i == 0)
 	{
-		free(arr);
+		free_arr(arr);
 		return (NULL);
 	}
 	if (buf[0] == '\n')
