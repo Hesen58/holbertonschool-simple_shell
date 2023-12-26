@@ -11,6 +11,7 @@ int main(void)
 	{
 		char *buf = NULL;
 		size_t n = 0;
+		struct stat st;
 		char **arr;
 		pid_t id;
 
@@ -38,23 +39,27 @@ int main(void)
 		{
 			free(buf);
 			free_arr(arr);
-			return (0);
+			return (2);
 		}
 		id = fork();
 
-		if (id == 0)
+		if (stat(arr[0], &st) == 0)
 		{
-			free(buf);
-			if (execve(arr[0], arr, environ) == -1)
+			if (id == 0)
 			{
-				free_arr(arr);
-				exit(EXIT_FAILURE);
+				free(buf);
+				if (execve(arr[0], arr, environ) == -1)
+				{
+					free_arr(arr);
+					exit(EXIT_FAILURE);
+				}
 			}
-		}
+			else
+			{
+				wait(NULL);
+			}
 		else
-		{
-			wait(NULL);
-		}
+			fprintf(stderr, "%s: %d: %s: not found\n", "hsh", getpid(); arr[0]);
 		free(buf);
 		free_arr(arr);
 	}
