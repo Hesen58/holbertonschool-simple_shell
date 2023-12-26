@@ -34,10 +34,6 @@ char **cut_string(char *buf, char **arr)
 		tok = strtok(NULL, " \n");
 		i++;
 	}
-	if (i == 0)
-	  {
-		free(arr);
-	  }
 	if (buf[0] == '\n')
 		return (NULL);
 	temp = (char *)malloc(strlen(arr[0]) + strlen(bin) + 1);

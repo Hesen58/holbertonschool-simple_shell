@@ -27,7 +27,6 @@ int main(void)
 			break;
 		}
 		arr = cut_string(buf, arr);
-
 		if (arr == NULL || arr[0] == NULL || arr[0][0] == '\0')
 		{
 			free(buf);
@@ -41,7 +40,7 @@ int main(void)
 			return (2);
 		}
 
-		if (access(arr[0], F_OK) == 0)
+		if (access(arr[0], F_OK) == 0 && access(getenv("PATH"), F_OK))
 		{
 			id = fork();
 
