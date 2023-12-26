@@ -14,11 +14,15 @@ char **cut_string(char *buf, char **arr)
 	int k;
 	struct stat st;
 
+	arr = NULL;
+
 	tok = strtok(buf, " \n");
 	if (tok == NULL)
-	  {
+	{
 		return (NULL);
-	  }
+	}
+	if(arr != NULL)
+		free_arr(arr);
 	arr = (char **)malloc(sizeof(char *) * 250);
 	for (k = 0; k < 250; k++)
 		arr[k] = NULL;

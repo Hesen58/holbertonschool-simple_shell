@@ -64,6 +64,7 @@ int main(void)
 			fprintf(stderr, "%s: %d: %s: not found\n", "./hsh", 1, arr[0]);
 
 		free_arr(arr);
+		free(buf);
 	}
 	return (0);
 }
