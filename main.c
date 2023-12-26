@@ -11,7 +11,6 @@ int main(void)
 	{
 		char *buf = NULL;
 		size_t n = 0;
-		struct stat st;
 		char **arr;
 		pid_t id;
 
@@ -42,7 +41,7 @@ int main(void)
 			return (2);
 		}
 
-		if (stat(arr[0], &st) == 0)
+		if (access(arr[0], F_OK) == 0)
 		{
 			id = fork();
 
@@ -61,7 +60,10 @@ int main(void)
 			}
 		}
 		else
+		{
 			fprintf(stderr, "%s: %d: %s: not found\n", "./hsh", 1, arr[0]);
+			return (127);
+		}
 
 		free_arr(arr);
 		free(buf);
