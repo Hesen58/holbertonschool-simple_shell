@@ -27,15 +27,14 @@ int main(void)
 			free(buf);
 			break;
 		}
-		if (environ == NULL)
-		{
-			free(buf);
-			exit(127);
-		}
 		arr = cut_string(buf, arr);
 
 		id = fork();
 
+		if (environ == NULL)
+		{
+			free_arr(arr);
+		}
 		if (id == 0)
 		{
 				free(buf);
