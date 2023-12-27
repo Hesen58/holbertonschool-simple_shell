@@ -37,7 +37,7 @@ int main(void)
 				status = 127;
 				fprintf(stderr, "./hsh: 1: %s: not found\n", arr[0]);
                         	free_arr(arr);
-                        	exit(EXIT_FAILURE);
+				break;
 		}
 		else
 		{
