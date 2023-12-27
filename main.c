@@ -12,7 +12,7 @@ int main(void)
 	{
 		char *buf = NULL;
 		size_t n = 0;
-		char **arr;
+		char **arr, **env = environ;
 		pid_t id;
 
 		if (isatty(STDIN_FILENO))
@@ -28,13 +28,17 @@ int main(void)
 			break;
 		}
 		arr = cut_string(buf, arr);
-
-		id = fork();
-
-		if (environ == NULL)
+	
+		    for (; *env; ++env)
+        		*env = NULL;
+		if (environ[0] == NULL)
 		{
+			fprintf(stderr, "./hsh: 1: %s: not found\n", arr[0]);
 			free_arr(arr);
+			free(buf);
+                        exit(127);
 		}
+		id = fork();
 		if (id == 0)
 		{
 				free(buf);

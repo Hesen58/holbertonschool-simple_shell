@@ -23,12 +23,9 @@ char **cut_string(char *buf, char **arr)
 		arr[k] = NULL;
 	while (tok != NULL)
 	{
-		if (strlen(tok) > 0)
-		{
 			arr[i] = (char *)malloc(strlen(tok) + 1);
 			strcpy(arr[i], tok);
 			i++;
-		}
 		tok = strtok(NULL, " \n\t");
 	}
 	arr[i] = NULL;
