@@ -7,6 +7,7 @@
 
 int main(void)
 {
+	int status = 0;
 	while (1)
 	{
 		char *buf = NULL;
@@ -33,9 +34,10 @@ int main(void)
 		{
 				free(buf);
 				execvp(arr[0], arr);
-				fprintf(stderr, "./hsh: 1: %s: Not found\n", arr[0]);
+				status = 127;
+				fprintf(stderr, "./hsh: 1: %s: not found\n", arr[0]);
                         	free_arr(arr);
-                        	return (127);
+                        	exit(EXIT_FAILURE);
 		}
 		else
 		{
@@ -44,5 +46,5 @@ int main(void)
 		free_arr(arr);
 		free(buf);
 	}
-	return (0);
+	return (status);
 }
