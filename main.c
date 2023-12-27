@@ -29,7 +29,7 @@ int main(void)
 		}
 		arr = cut_string(buf, arr);
 	
-		if (strcmp(environ[0], "_=./hsh") == 0)
+		if (getenv("PATH") == NULL)
 		{
 			fprintf(stderr, "./hsh: 1: %s: not found\n", arr[0]);
 			free_arr(arr);
