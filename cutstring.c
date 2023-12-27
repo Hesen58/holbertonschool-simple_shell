@@ -9,10 +9,9 @@
 
 char **cut_string(char *buf, char **arr)
 {
-	char *tok, /*bin = strcat(env_path(), "/"),*/ *temp;
+	char *tok, *temp;
 	int i = 0;
 	int k;
-	struct stat st;
 
 	arr = NULL;
 

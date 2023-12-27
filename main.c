@@ -27,12 +27,12 @@ int main(void)
 			break;
 		}
 		arr = cut_string(buf, arr);
-		/*if (strcmp(arr[0], "exit") == 0)
+		if (strcmp(arr[0], "exit") == 0)
 		{
 			free(buf);
 			free_arr(arr);
 			return (2);
-		}*/
+		}
 
 		if (access(arr[0], X_OK) == -1)
                 {
