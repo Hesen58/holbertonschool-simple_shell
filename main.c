@@ -27,22 +27,22 @@ int main(void)
 			break;
 		}
 		arr = cut_string(buf, arr);
-		if (access(arr[0], X_OK) == 0)
+		/*if (access(arr[0], X_OK) == -1)
                 {
                         fprintf(stderr, "%s: %d: %s: not found\n", "./hsh", 1, arr[0]);
                         free(buf);
                         free_arr(arr);
                         return (127);
-                }
+                }*/
 
-		if (access(arr[0], F_OK) == 0)
-		{
+		/*if (access(arr[0], F_OK) == 0)
+		{*/
 			id = fork();
 
 			if (id == 0)
 			{
 				free(buf);
-				if (execve(arr[0], arr, environ) == -1)
+				if (execvp(arr[0], arr) == -1)
 				{
 					free_arr(arr);
 					exit(EXIT_FAILURE);
@@ -52,7 +52,7 @@ int main(void)
 			{
 				wait(NULL);
 			}
-		}
+		/*}*/
 
 		free_arr(arr);
 		free(buf);

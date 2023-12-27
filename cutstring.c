@@ -9,19 +9,18 @@
 
 char **cut_string(char *buf, char **arr)
 {
-	char *tok, *temp;
+	char *tok;
 	int i = 0;
 	int k;
 
-	arr = NULL;
-
+	/*arr = NULL;*/
 	tok = strtok(buf, " \n");
 	if (tok == NULL)
 	{
 		return (NULL);
 	}
-	if(arr != NULL)
-		free_arr(arr);
+	/*if(arr != NULL)
+		free_arr(arr);*/
 	arr = (char **)malloc(sizeof(char *) * 250);
 	for (k = 0; k < 250; k++)
 		arr[k] = NULL;
@@ -35,10 +34,10 @@ char **cut_string(char *buf, char **arr)
 		}
 		tok = strtok(NULL, " \n");
 	}
-	if (buf[0] == '\n')
-		return (NULL);
-	temp = env_path(buf);
-	if (arr[0][0] == '.' || arr[0][0] == '/')
+	/*if (buf[0] == '\n')
+		return (NULL);*/
+	/*temp = env_path(buf);
+	if (access(arr[0], X_OK) == 0)
 	{
 		return (arr);
 	}
@@ -47,6 +46,6 @@ char **cut_string(char *buf, char **arr)
 		free(arr[0]);
 		arr[0] = temp;
 	}
-	arr[i] = NULL;
+	arr[i] = NULL;*/
 	return (arr);
 }
