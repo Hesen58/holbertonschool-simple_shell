@@ -1,17 +1,26 @@
 #include "main.h"
 
-char *env_path(void)
+char *env_path(char *buf)
 {
-	char *path = getenv("PATH");
-	char *tok = strtok(path, ":");
+	char *path;
+	char *token;
+	char full_path[100];
 
-	while (tok != NULL)
+	path = getenv("PATH");
+	if (path == NULL)
 	{
-		if (tok != NULL)
-			path = tok;
-		tok = strtok(NULL, ":");
+		return (NULL);
 	}
+	token = strtok(path, ":");
+	while (token != NULL)
+	{
+		snprintf(full_path, sizeof(full_path), "%s/%s", token, buf);
 
-	free(tok);
-	return (path);
+		if (access(full_path, X_OK) == 0)
+		{
+			return (strdup(full_path));
+		}
+		token = strtok(NULL, ":");
+	}
+	return (NULL);
 }

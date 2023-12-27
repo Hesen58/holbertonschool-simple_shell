@@ -9,7 +9,7 @@
 
 char **cut_string(char *buf, char **arr)
 {
-	char *tok, *bin = strcat(env_path(), "/"), *temp = bin;
+	char *tok, /*bin = strcat(env_path(), "/"),*/ *temp;
 	int i = 0;
 	int k;
 	struct stat st;
@@ -34,20 +34,17 @@ char **cut_string(char *buf, char **arr)
 		tok = strtok(NULL, " \n");
 		i++;
 	}
-	free(tok);
 	if (buf[0] == '\n')
 		return (NULL);
-	temp = (char *)malloc(strlen(arr[0]) + strlen(bin) + 1);
-	strcpy(temp, bin);
-	free(bin);
-	strcat(temp, arr[0]);
-	if (buf != NULL && stat(arr[0], &st) != 0 && stat(temp, &st) == 0)
+	if (access(arr[0], X_OK) == 0)
 	{
+		return (arr);
+	}
+	else if ((temp = env_path(buf)) != NULL)
+	{	
 		free(arr[0]);
 		arr[0] = temp;
 	}
-	else
-		free(temp);
 	arr[i] = NULL;
 	return (arr);
 }
