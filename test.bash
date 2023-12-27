@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# Önce mevcut ortam değişkenlerini yedekleyin
-export ORTAM_DEGISKENLERI_YEDEGI=$(printenv)
+input="   /bin/ls        ls               ls   "
 
-# Sonra ortam değişkenlerini silebilirsiniz
-for i in $(printenv | cut -d= -f1); do
-    unset $i
+# Girdi stringini boşluklara göre ayır ve diziye at
+IFS=' ' read -ra words <<< "$input"
+
+# Çıktıyı oluştur
+output=""
+for word in "${words[@]}"; do
+    output+="/bin/$word "
 done
 
-# Test için öğrencinin kabuk programını burada çalıştırabilirsiniz
-./hsh
-
-# Test bittikten sonra ortam değişkenlerini geri yükleyin
-export $(echo "$ORTAM_DEGISKENLERI_YEDEGI" | tr '\n' ' ')
+# C programını çağır ve çıktıyı yazdır
+./hsh <<< "$output"
