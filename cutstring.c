@@ -27,20 +27,23 @@ char **cut_string(char *buf, char **arr)
 		arr[k] = NULL;
 	while (tok != NULL)
 	{
-		arr[i] = (char *)malloc(strlen(tok) + 1);
-		strcpy(arr[i], tok);
-
+		if (strcmp(tok, "") != 0)
+		{
+			arr[i] = (char *)malloc(strlen(tok) + 1);
+			strcpy(arr[i], tok);
+			i++;
+		}
 		tok = strtok(NULL, " \n");
-		i++;
 	}
 	if (buf[0] == '\n')
 		return (NULL);
-	if (access(arr[0], X_OK) == 0)
+	temp = env_path(buf);
+	if (arr[0][0] == '.' || arr[0][0] == '/')
 	{
 		return (arr);
 	}
-	else if ((temp = env_path(buf)) != NULL)
-	{	
+	else if (temp != NULL)
+	{
 		free(arr[0]);
 		arr[0] = temp;
 	}
