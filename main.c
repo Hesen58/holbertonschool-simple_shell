@@ -28,6 +28,11 @@ int main(void)
 			break;
 		}
 		arr = cut_string(buf);
+		if (arr == NULL)
+		{
+			free(buf);
+			continue;
+		}
 	
 		if (getenv("PATH") == NULL && arr[0][0] != '.' && arr[0][0] != '/')
 		{
