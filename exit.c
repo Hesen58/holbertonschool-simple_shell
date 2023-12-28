@@ -6,17 +6,18 @@
  *
  * Return: Status code.
  */
-int handle_exit_command(char **arr)
+void handle_exit_command(char **arr)
 {
 	int status = 0;
 
-	if (arr[0] != NULL && strcmp(arr[0], "exit") == 0)
+	if (arr[1])
 	{
-		if (arr[1] != NULL)
+		status = atoi(arr[1]);
+		if (status <= -1)
 			status = 2;
 		free_arr(arr);
 		exit(status);
 	}
-
-	return (status);
+	free_arr(arr);
+	exit(0);
 }
