@@ -29,21 +29,16 @@ int main(void)
 		}
 		arr = cut_string(buf);
 		if (arr == NULL)
-		{
-			free(buf);
 			continue;
-		}
-
+		status = handle_exit_command(arr);
 		if (getenv("PATH") == NULL && arr[0][0] != '.' && arr[0][0] != '/')
 		{
 			fprintf(stderr, "./hsh: 1: %s: not found\n", arr[0]);
 			free_arr(arr);
-			free(buf);
 			exit(127);
 		}
 		status = execute_command(arr);
 		free_arr(arr);
-		free(buf);
 	}
 	return (status);
 }

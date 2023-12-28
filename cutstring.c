@@ -29,5 +29,6 @@ char **cut_string(char *buf)
 		tok = strtok(NULL, " \n\t");
 	}
 	arr[i] = NULL;
+	free(buf);
 	return (arr);
 }
