@@ -30,5 +30,6 @@ char **cut_string(char *buf)
 	}
 	arr[i] = NULL;
 	free(buf);
+	free(tok);
 	return (arr);
 }
