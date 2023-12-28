@@ -10,7 +10,7 @@
 #include <errno.h>
 #include <sys/stat.h>
 extern char **environ;
-char **cut_string(char *buf, char **arr);
+char **cut_string(char *buf);
 void free_arr(char **arr);
 char *env_path(char *buf);
 #endif

@@ -7,9 +7,9 @@
  * Return: 2d array.
  */
 
-char **cut_string(char *buf, char **arr)
+char **cut_string(char *buf)
 {
-	char *tok;
+	char *tok, **arr;
 	int i = 0;
 	int k;
 

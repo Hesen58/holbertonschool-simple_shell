@@ -27,9 +27,9 @@ int main(void)
 			free(buf);
 			break;
 		}
-		arr = cut_string(buf, arr);
+		arr = cut_string(buf);
 	
-		if (getenv("PATH") == NULL && (arr[0][0] != '.' && arr[0][0] != '/'))
+		if (getenv("PATH") == NULL && arr[0][0] != '.' && arr[0][0] != '/')
 		{
 			fprintf(stderr, "./hsh: 1: %s: not found\n", arr[0]);
 			free_arr(arr);
