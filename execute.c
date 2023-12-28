@@ -11,6 +11,13 @@ int execute_command(char **arr)
 	int status = 0;
 	pid_t id = fork();
 
+	if (arr[0] != NULL && strcmp(arr[0], "exit") == 0)
+	{
+		status = (arr[1] != NULL) ? 2 : 0;
+		free_arr(arr);
+		exit(status);
+	}
+
 	if (id == 0)
 	{
 		execvp(arr[0], arr);
