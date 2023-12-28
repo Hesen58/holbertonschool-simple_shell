@@ -18,14 +18,14 @@ char **cut_string(char *buf, char **arr)
 	{
 		return (NULL);
 	}
-	arr = (char **)malloc(sizeof(char *) * 250);
+	arr = (char **)malloc(sizeof(char *) * 2048);
 	for (k = 0; k < 250; k++)
 		arr[k] = NULL;
 	while (tok != NULL)
 	{
-			arr[i] = (char *)malloc(strlen(tok) + 1);
-			strcpy(arr[i], tok);
-			i++;
+		arr[i] = (char *)malloc(strlen(tok) + 1);
+		strcpy(arr[i], tok);
+		i++;
 		tok = strtok(NULL, " \n\t");
 	}
 	arr[i] = NULL;
