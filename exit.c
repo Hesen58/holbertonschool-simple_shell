@@ -14,7 +14,7 @@ void handle_exit_command(char **arr)
 	{
 		if (strcmp(arr[i], "exit") == 0)
 		{
-			if (strcmp(arr[0], "exit") == 0)
+			if (arr[1] == NULL)
 			{
 				free_arr(arr);
 				exit(0);
