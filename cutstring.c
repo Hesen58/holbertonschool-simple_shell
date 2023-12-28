@@ -2,7 +2,6 @@
 /**
  * cut_string - Create new array with strtok
  * @buf: user input.
- * @arr: array.
  *
  * Return: 2d array.
  */

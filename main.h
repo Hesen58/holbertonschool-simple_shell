@@ -12,5 +12,5 @@
 extern char **environ;
 char **cut_string(char *buf);
 void free_arr(char **arr);
-char *env_path(char *buf);
+int execute_command(char **arr);
 #endif
