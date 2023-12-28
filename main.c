@@ -30,7 +30,22 @@ int main(void)
 		arr = cut_string(buf);
 		if (arr == NULL)
 			continue;
-		handle_exit_command(arr);
+		/*handle_exit_command(arr);*/
+		        if (strcmp(arr[0], "exit") == 0)
+        {
+            if (arr[1] == NULL)
+            {
+                free_arr(arr);
+                status = 0;
+            }
+            else
+            {
+                fprintf(stderr, "./hsh: 1: exit: Illegal number: %s\n", arr[1]);
+                free_arr(arr);
+                status = 2;
+            }
+            break;
+        }
 		if (getenv("PATH") == NULL && arr[0][0] != '.' && arr[0][0] != '/')
 		{
 			fprintf(stderr, "./hsh: 1: %s: not found\n", arr[0]);
