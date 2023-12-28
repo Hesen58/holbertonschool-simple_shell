@@ -8,16 +8,23 @@
  */
 void handle_exit_command(char **arr)
 {
-	int status = 0;
+	int i;
 
-	if (arr[1])
+	for (i = 0; arr[i] != NULL; i++)
 	{
-		status = atoi(arr[1]);
-		if (status <= -1)
-			status = 2;
-		free_arr(arr);
-		exit(status);
+		if (strcmp(arr[i], "exit") == 0)
+		{
+			if (strcmp(arr[0], "exit") == 0)
+			{
+				free_arr(arr);
+				exit(0);
+			}
+			else
+			{
+				free_arr(arr);
+				exit(2);
+			}
+		}
+
 	}
-	free_arr(arr);
-	exit(0);
 }
