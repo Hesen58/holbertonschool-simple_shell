@@ -19,7 +19,7 @@ void handle_exit_command(char **arr)
 				free_arr(arr);
 				exit(0);
 			}
-			else
+			else if(access(arr[0], X_OK) == -1)
 			{
 				free_arr(arr);
 				exit(2);
