@@ -10,7 +10,7 @@
 #include <errno.h>
 #include <sys/stat.h>
 extern char **environ;
-char **cut_string(char *buf);
+char **split_command(char *input);
 void free_arr(char **arr);
 int execute_command(char **arr);
 void handle_exit_command(char **arr, int *exit_flag);

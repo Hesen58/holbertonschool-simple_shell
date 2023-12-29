@@ -1,20 +1,21 @@
 #include "main.h"
 /**
- * cut_string - Create new array with strtok
- * @buf: user input.
+ * split_command - Create new array with strtok
+ * @input: user input.
  *
  * Return: 2d array.
  */
 
-char **cut_string(char *buf)
+char **split_command(char *input)
 {
 	char *tok, **arr;
 	int i = 0;
 	int k;
 
-	tok = strtok(buf, " \n\t");
+	tok = strtok(input, " \n\t");
 	if (tok == NULL)
 	{
+		free(input);
 		return (NULL);
 	}
 	arr = (char **)malloc(sizeof(char *) * 250);
@@ -29,6 +30,6 @@ char **cut_string(char *buf)
 		tok = strtok(NULL, " \n\t");
 	}
 	arr[i] = NULL;
-	free(buf);
+	free(input);
 	return (arr);
 }

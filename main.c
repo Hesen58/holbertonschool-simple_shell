@@ -12,7 +12,7 @@ int main(void)
 
 	while (!exit_flag)
 	{
-		char *buf = NULL;
+		char *input = NULL;
 		size_t n = 0;
 		char **arr;
 
@@ -21,14 +21,14 @@ int main(void)
 			printf("#cisfun$ ");
 		}
 
-		if (getline(&buf, &n, stdin) == -1)
+		if (getline(&input, &n, stdin) == -1)
 		{
 			if (isatty(STDIN_FILENO))
 				printf("\n");
-			free(buf);
+			free(input);
 			break;
 		}
-		arr = cut_string(buf);
+		arr = split_command(input);
 		if (arr == NULL)
 			continue;
 		handle_exit_command(arr, &exit_flag);
