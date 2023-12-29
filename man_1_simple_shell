@@ -1,0 +1,87 @@
+.TH HSH(1)               POSIX Programmer's Manual              HSH(1)
+
+.SH NAME
+.B ./hsh
+- A simple UNIX command line interpreter.
+
+.SH SYNOPSIS
+.B ./hsh [command_string] [arguments]
+
+.SH DESCRIPTION
+.LP
+.B hsh
+is an sh-compatible command language interpreter that reads and executes commands from standard input. It is conformed to the POSIX specifications for the shell program. This shell is based on the original UNIX shell written by Ken Thompson. Developed in Ubuntu 20.04 LTS, using gcc.
+.LP
+
+.SH OVERVIEW
+The shell reads commands from the terminal and executes them. It needs to have its full path to work correctly
+
+.SS Invocation
+.B hsh
+is invoked by the command:
+.br
+.\&$ ./hsh
+A prompt will appear for the user to enter and execute commands by typing comma
+nd names and pressing the return key. A user can also pipe commands into the pr
+ogram via the pipe character '|'. For example:
+.br
+\&$ echo "hello world" | ./hsh
+
+.SH INSTALLATION
+.I To install:
+.br
+
+.B git clone https://github.com/Hesen58/holbertonschool-simple_shell.git
+.br
+
+.I Compile files using:
+.br
+
+.B gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+.br
+.br
+
+.SH BUILT-INS
+.PP
+exit - Exits the shell.
+.PP
+env - Prints the user's environment.
+
+.SH EXAMPLE
+$ ./hsh
+.br
+#cisfun$ /bin/ls -l
+.br
+total 40
+.br
+-rw-r--r-- 1 root root  189 Dec 28 23:03 AUTHORS
+.br
+-rw-r--r-- 1 root root  475 Dec 28 21:52 execute.c
+.br
+-rw-r--r-- 1 root root  296 Dec 28 22:03 exit.c
+.br
+-rw-r--r-- 1 root root  234 Dec 28 02:56 free.c
+.br
+-rw-r--r-- 1 root root  975 Dec 28 22:26 main.c
+.br
+-rw-r--r-- 1 root root  402 Dec 28 21:57 main.h
+.br
+-rw-r--r-- 1 root root 2537 Dec 28 23:12 man_1_simple_shell
+.br
+-rw-r--r-- 1 root root 4110 Dec 28 22:57 README.md
+.br
+-rw-r--r-- 1 root root  584 Dec 28 22:00 split.c
+.br
+#cisfun$
+
+.SH SEE ALSO
+sh(1)
+
+.SH HISTORY
+.B hsh
+is based on the Thompson Shell's program(sh) written by Ken Thompson in 1971. It was a simple command interpreter, not designed for scripting, butnonetheless introduced several innovative features to the command-line interface and led to the development of the later Unix shells.
+
+.SH BUGS
+This shell doesn't handle relative path, neither how error messages will apear when trying. Special characters, redirections and piping also won't work.
+.SH AUTHORS
+Written by Revan Eliyev & Hesen Isgenderov
