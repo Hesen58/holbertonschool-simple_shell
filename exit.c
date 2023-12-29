@@ -4,6 +4,7 @@
  * handle_exit_command - handle exit.
  * @arr: array of commands.
  * @exit_flag: exit flag.
+ *
  * Return: Status code.
  */
 void handle_exit_command(char **arr, int *exit_flag)

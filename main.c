@@ -1,4 +1,24 @@
 #include "main.h"
+
+/**
+ * check_env - checks if environment is not NULL
+ * @arr: array of command.
+ *
+ * Return: 1 or 0.
+ */
+
+int check_env(char **arr)
+{
+	if (getenv("PATH") == NULL && arr[0][0] != '.' && arr[0][0] != '/'
+			&& strcmp(arr[0], "env") != 0)
+	{
+		fprintf(stderr, "./hsh: 1: %s: not found\n", arr[0]);
+		free_arr(arr);
+		return (1);
+	}
+	return (0);
+}
+
 /**
  * main - Simple shell.
  *
@@ -34,12 +54,8 @@ int main(void)
 		handle_exit_command(arr, &exit_flag);
 		if (!exit_flag)
 		{
-			if (getenv("PATH") == NULL && arr[0][0] != '.' && arr[0][0] != '/')
-			{
-				fprintf(stderr, "./hsh: 1: %s: not found\n", arr[0]);
-				free_arr(arr);
+			if (check_env(arr))
 				exit(127);
-			}
 			status = execute_command(arr);
 			free_arr(arr);
 		}
