@@ -16,7 +16,7 @@ int execute_command(char **arr)
 		execvp(arr[0], arr);
 		fprintf(stderr, "./hsh: 1: %s: not found\n", arr[0]);
 		free_arr(arr);
-		exit(2);
+		exit(127);
 	}
 	else
 	{
